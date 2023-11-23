@@ -151,7 +151,7 @@ def get_country_by_id(id):
 
 @app.route('/api/country/<int:id>/', methods=['DELETE'])
 def delete_country(id):
-    country = Country.query.get(id)
+    country = db.session.get(Country, id)
 
     if country:
         db.session.delete(country)
@@ -166,7 +166,7 @@ def delete_country(id):
 
 @app.route('/api/country/<int:id>/', methods=['PUT'])
 def update_country(id):
-    country = Country.query.get(id)
+    country = db.session.get(Country, id)
 
     if country:
         new_country = request.get_json()
