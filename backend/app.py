@@ -38,7 +38,7 @@ class Country(db.Model):
 
     def serialize(self):
         return {
-            'id': self.id,
+            'country_id': self.id,
             'name': self.name,
             'iso2': self.iso2,
             'iso': self.iso,
@@ -143,6 +143,15 @@ def get_country():
 @app.route('/api/country/<int:id>/')
 def get_country_by_id(id):
     country = db.session.get(Country, id)
+
+    if country:
+        return jsonify(country.serialize())
+    else:
+        return "Country not found", 404
+
+@app.route('/api/country/iso/<string:iso>/')
+def get_country_by_iso(iso):
+    country = Country.query.filter_by(iso=iso.upper()).first()
 
     if country:
         return jsonify(country.serialize())

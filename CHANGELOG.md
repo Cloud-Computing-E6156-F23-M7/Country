@@ -1,3 +1,9 @@
+## November 24, 2023
+
+### Backend
+
+* Add get_country_by_iso ([@kystanleylin](https://github.com/kystanleylin))
+
 ## November 22, 2023
 
 ### Backend
