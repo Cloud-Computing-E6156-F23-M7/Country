@@ -181,7 +181,7 @@ def update_country(id):
         new_country = request.get_json()
         country.name = new_country.get('name', country.name)
         country.iso2 = new_country.get('iso2', country.iso2)
-        country.iso = new_country.get('iso3', country.iso)
+        country.iso = new_country.get('iso', country.iso)
         country.currencies = new_country.get('currencies', country.currencies)
         country.capital = new_country.get('capital', country.capital)
         country.capitalInfo = new_country.get('capitalInfo', country.capitalInfo)
