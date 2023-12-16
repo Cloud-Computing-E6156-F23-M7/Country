@@ -9,7 +9,7 @@ import pandas as pd
 ### Set up the database ###
 
 class DbConfig(object):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///country.db'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://admin:weareteamm7@malariastat.czmrkezas6nx.us-east-2.rds.amazonaws.com:3306/Country_db'
     SQLALCHEMY_BINDS = {
         'country_db': SQLALCHEMY_DATABASE_URI  # default bind
     }
@@ -115,7 +115,7 @@ def home():
 
 @app.route('/api/reset/country/', methods=['PUT'])
 def reset_country_db():
-    engine = db.get_engine(app, bind='country_db')
+    engine = db.engines['country_db']
     if engine:
         metadata = db.MetaData()
         metadata.reflect(bind=engine)
